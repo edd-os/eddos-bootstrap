@@ -1,0 +1,5 @@
+#!/bin/sh
+XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
+
+echo "Removing directory $XDG_DATA_HOME/eddos"
+rm -r "$XDG_DATA_HOME/eddos"
