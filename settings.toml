@@ -1,1 +1,1 @@
-target = [ { path = "/usr/local/share/eddos"} ]
+target = [ { path = "${XDG_DATA_HOME/eddos}" }, { path = "${HOME}/.local/share/eddos" } ]
