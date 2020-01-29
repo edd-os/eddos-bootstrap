@@ -176,3 +176,23 @@ function transparent_regenerate_initramfs {
         fi
 	return 0
 }
+
+function transparent_update_system {
+        # Test if DNF installed
+        dnf > /dev/null
+        if [ $? -ne 0 ]; then
+                echo "DNF not installed.  Are you on Fedora?"
+                return 1
+        fi
+
+        # Installs the package
+	if get_permission "Updating system."; then
+		sudo dnf -y upgrade
+	fi
+
+        if [ $? -ne 0 ]; then
+                echo "System update failed."
+                return 1
+        fi
+	return 0
+}
