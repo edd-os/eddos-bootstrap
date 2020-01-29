@@ -1,4 +1,5 @@
 EDDOS_ASK_PERMISSION=${EDDOS_ASK_PERMISSION:-false}
+XDG_DATA_HOME="${XDG_DATA_HOME:-$HOME/.local/share}"
 MCM_DOTFILES_DIR="${MCM_DOTFILES_DIR:-$XDG_DATA_HOME/mcm}"
 
 function get_permission {
