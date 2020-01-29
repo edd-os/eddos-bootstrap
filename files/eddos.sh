@@ -151,3 +151,28 @@ function transparent_curl {
 		curl -fLo "$1" --create-dirs "$2"
 	fi
 }
+
+function transparent_regenerate_initramfs {
+        # Test if DNF installed
+        dnf > /dev/null
+        if [ $? -ne 0 ]; then
+                echo "DNF not installed.  Are you on Fedora?"
+                return 1
+        fi
+
+	if ! dnf list --installed | grep -q "kernel-core"; then
+		echo "kernel-core not installed"
+		return 0
+	fi
+
+        # Installs the package
+	if get_permission "Reinstalling package kernel-core."; then
+		sudo dnf -y reinstall kernel-core
+	fi
+
+        if [ $? -ne 0 ]; then
+                echo "Reinstallation failed."
+                return 1
+        fi
+	return 0
+}
