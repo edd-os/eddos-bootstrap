@@ -120,7 +120,7 @@ function transparent_make_root_executable {
 	fi
 
 	if get_permission "Creating executable file $1 as root."; then
-		sudo sh -c "echo -e \"$contents\" > \"$file\""
+		sudo sh -c 'echo -e "$1" > "$2"' '' "$contents" "$file"
 		sudo chmod 755 "$file"
 	fi
 }
